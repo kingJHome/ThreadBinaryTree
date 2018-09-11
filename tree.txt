@@ -1,0 +1,16 @@
+<root value="-">
+	<lchild value="+">
+		<lchild value="a"/>
+		<rchild value="*">
+			<lchild value="b"/>
+			<rchild value="-">
+				<lchild value="c"/>
+				<rchild value="d"/>
+			</rchild>
+		</rchild>
+	</lchild>
+	<rchild value="/">
+		<lchild value="e"/>
+		<rchild value="f"/>
+	</rchild>
+</root>
