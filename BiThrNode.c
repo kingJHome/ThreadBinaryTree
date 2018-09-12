@@ -9,21 +9,21 @@ BiThrTree InThreadTree(BiThrTree t,BiThrTree pre){
 	BiThrTree result = NULL;
 
 	if(t){
-		BiThrTree temp = InThreadTree(t->lchild,NULL);
-		/*if(!t->lchild){
+		BiThrTree temp = InThreadTree(t->lchild,pre);
+		if(!t->lchild){
 			t->LTag = Thread;
 			t->lchild = pre;
 		}
 		if(temp && !temp->rchild){
 			temp->RTag = Thread;
 			temp->rchild = t;
-		}*/
-		temp = InThreadTree(t->rchild,NULL);
-		/*if( temp != NULL ){
+		}
+		temp = InThreadTree(t->rchild,t);
+		if( temp != NULL ){
 			result = temp;
 		}else{
 			result = t;
-		}*/
+		}
 	}
 
 	return result;
@@ -152,14 +152,16 @@ void InOrderThreading(BiThrTree *thr,BiThrTree t){
 	}
 }
 
-//遍历线索化树
+//中序遍历线索化树
 void InOrderVisit(BiThrTree t,void (*tracter)(char)){
 	BiThrTree p = t->lchild;
 
 	while(p != t){
-		for( ; p->LTag==Link; p = p->lchild);
+		while(p->LTag==Link){
+			p = p->lchild;
+		}
 		tracter(p->data);
-		while(p->RTag==Thread && p!=t){
+		while(p->RTag==Thread && p->rchild!=t){
 			p = p->rchild;
 			tracter(p->data);
 		}
