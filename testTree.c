@@ -8,16 +8,18 @@ int main(int argc,char *argv[]){
 	char filename[] = "tree.txt";
 
 	//构建树
-	CreatBitTree(&curtree, filename);
+	CreateBitTree(&curtree, filename);
+	//中序遍历树
+	//InOriginVisit(curtree, visitTree);
 	//线索化
 	InOrderThreading(&treeHeader, curtree);
 	//访问树
-	InOrderVisit(treeheader, visitTree);
+	InOrderVisit(treeHeader, visitTree);
 	printf("\n");
 
 	return 0;
 }
 
 void visitTree(char ch){
-	printf("%-5c", ch);
+	printf("%-3c", ch);
 }

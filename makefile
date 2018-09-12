@@ -4,4 +4,4 @@ testtree: $(files)
 	gcc -o $@ $^
 
 testdebugger: $(files)
-	gcc -o $@ $^
+	gcc -g $^ -o $@
