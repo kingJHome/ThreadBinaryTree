@@ -152,6 +152,23 @@ void InOrderThreading(BiThrTree *thr,BiThrTree t){
 	}
 }
 
+//非递归中序线索化树
+void midThreadTree(BiThrTree *thr,BiThrTree t){
+	*thr = (BiThrTree)malloc(sizeof(BiThrNode));
+
+	if( *thr ){
+		(*thr)->LTag = Link;
+		(*thr)->RTag = Thread;
+		(*thr)->rchild = *thr;
+
+		if( t == NULL ){
+			(*thr)->lchild = *thr;
+		}else{
+			
+		}
+	}
+}
+
 //中序遍历线索化树
 void InOrderVisit(BiThrTree t,void (*tracter)(char)){
 	BiThrTree p = t->lchild;

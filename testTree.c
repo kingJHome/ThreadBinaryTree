@@ -11,8 +11,14 @@ int main(int argc,char *argv[]){
 	CreateBitTree(&curtree, filename);
 	//中序遍历树
 	//InOriginVisit(curtree, visitTree);
-	//线索化
-	InOrderThreading(&treeHeader, curtree);
+	if( argc >= 2 ){
+		//线索化
+		if( strcmp(argc[1],"-i")==0 ){
+			InOrderThreading(&treeHeader, curtree);
+		}else{
+			midThreadTree(&treeHeader, curtree);
+		}
+	}
 	//访问树
 	InOrderVisit(treeHeader, visitTree);
 	printf("\n");
