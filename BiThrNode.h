@@ -12,7 +12,7 @@ typedef struct BiThrNode{
 
 /****************************栈*******************************/
 typedef struct treeStack{
-	BiThrNode arr[MAXSIZE];
+	BiThrTree arr[MAXSIZE];
 	int curPos;
 }TreeStack;
 /*************************************************************/

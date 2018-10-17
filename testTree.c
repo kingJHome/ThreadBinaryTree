@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "BiThrNode.h"
 
 void visitTree(char);
@@ -13,9 +14,9 @@ int main(int argc,char *argv[]){
 	//InOriginVisit(curtree, visitTree);
 	if( argc >= 2 ){
 		//线索化
-		if( strcmp(argc[1],"-i")==0 ){
+		if( strcmp(argv[1],"-i")==0 ){
 			InOrderThreading(&treeHeader, curtree);
-		}else if( strcmp(argc[1],"-n")==0 ){
+		}else if( strcmp(argv[1],"-n")==0 ){
 			midThreadTree(&treeHeader, curtree);
 		}
 	}

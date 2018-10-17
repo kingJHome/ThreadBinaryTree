@@ -164,7 +164,45 @@ void midThreadTree(BiThrTree *thr,BiThrTree t){
 		if( t == NULL ){
 			(*thr)->lchild = *thr;
 		}else{
+			BiThrTree pre = *thr;
+			TreeStack curStack;
 			
+			(*thr)->lchild = t;
+			curStack.curPos = 0;
+			curStack.arr[curStack.curPos++] = *thr;
+			while( curStack.curPos ){//栈非空
+				BiThrTree curTop = curStack.arr[curStack.curPos-1];
+
+				while( curTop->lchild ){//左子树入栈
+					curStack.arr[curStack.curPos++] = curTop->lchild;
+					curTop = curTop->lchild;
+				}
+				curTop->LTag = Thread;
+				curTop->lchild = pre;
+				pre = curTop;
+				if( !curTop->rchild ){
+					while( !curTop->rchild ){
+						--curStack.curPos;
+						curTop = curStack.arr[curStack.curPos-1];
+						pre->RTag = Thread;
+						pre->rchild = curTop;
+						if( curTop == (*thr) ){
+							curTop->rchild = pre;
+							break;
+						}else{
+							pre = curTop;
+						}
+					}
+
+					if( curTop != (*thr) ){
+						curStack.arr[curStack.curPos-1] = curTop->rchild;
+					}else{
+						--curStack.curPos;
+					}
+				}else{
+					curStack.arr[curStack.curPos-1] = curTop->rchild;
+				}
+			}
 		}
 	}
 }
