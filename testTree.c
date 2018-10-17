@@ -15,7 +15,7 @@ int main(int argc,char *argv[]){
 		//线索化
 		if( strcmp(argc[1],"-i")==0 ){
 			InOrderThreading(&treeHeader, curtree);
-		}else{
+		}else if( strcmp(argc[1],"-n")==0 ){
 			midThreadTree(&treeHeader, curtree);
 		}
 	}
